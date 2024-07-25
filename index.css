@@ -1,0 +1,139 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: inter, sans-serif;
+    height: 100vh;
+}
+
+/* buttons */
+
+.btn-orange,
+.btn-black-s {
+    border: none;
+    font-family: inherit;
+    font-size: 1.25em;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.btn-orange {
+    margin-top: 1rem;
+    background-color: #FF8C38;
+    color: inherit;
+    width: 100%;
+}
+
+.btn-black-s {
+    color: #FFF;
+    background-color: #161616;
+    font-size: 1em;
+
+}
+
+/* navigation */
+
+.navigation {
+    display: flex;
+    background-color: #FFF7ED;
+    padding: 2rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.navigation a {
+    cursor: pointer;
+}
+
+.link {
+    text-decoration: none;
+    color: #4D4D4D;
+}
+
+.vanlife-logo {
+    width: 10rem;
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    font-size: 1.2rem;
+}
+
+/* footer */
+
+.footer {
+    background-color: #252525;
+    color: #AAAAAA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*position: absolute;*/
+    /* bottom: 0; */
+    width: 100%;
+}
+
+/* Home page */
+.home-main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10%;
+    gap: 1rem;
+    /*: linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)), url("./assets/img-home.png") no-repeat center center;*/
+    background-image: url(assets/img-home.png); 
+    background-size: cover;
+    color: #FFF;
+}
+
+.home-main > h1 {
+    margin: 0;
+}
+
+/* About page */
+
+.main-about {
+    color: #161616;
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+.about-img {
+    width: 100%;
+    margin: 0;
+}
+
+.copy-section {
+    background-color: #FFF7ED;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.about-main-copy > h1 {
+    margin: 0;
+}
+
+.about-vans-container {
+    background-color: #FFCC8D;
+    width: 80%;
+    padding: 1.5rem 2rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;;
+}
+
+.about-vans-container > h2 {
+    margin: 0;
+    padding-bottom: 1.5rem;
+}
