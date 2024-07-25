@@ -6,7 +6,6 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: inter, sans-serif;
-    height: 100vh;
 }
 
 /* buttons */
@@ -47,8 +46,11 @@ html, body {
     width: 100%;
 }
 
-.navigation a {
-    cursor: pointer;
+.navigation a:hover {
+    color: #161616;
+    text-decoration: underline;
+        cursor: pointer;
+
 }
 
 .link {
