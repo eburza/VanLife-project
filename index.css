@@ -6,6 +6,7 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: inter, sans-serif;
+    background-color: #FFF7ED;
 }
 
 /* buttons */
@@ -146,6 +147,73 @@ html, body {
 
 /* Vans page */
 
-.van-img {
- width: 15rem;
+.main-vans {
+    padding: 2rem;
 }
+
+.tag-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+    margin-bottom: 1.5rem;
+}
+
+.tag-list {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.tag {
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.tag-list-el {
+    background-color: #FFEAD0;
+    color: #4D4D4D;
+}
+
+.van-type-tag {
+    color: #FFEAD0;
+    display: inline-block;
+}
+
+.simple {
+    background-color: #E17654;
+}
+
+.rugged {
+    background-color: #115E59;
+}
+
+.luxury {
+    background-color: #161616;
+}
+
+.van-list {
+    display: grid;
+    grid-gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.van-tile {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: 400;
+}
+
+.van-img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+}
+
+.van-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+

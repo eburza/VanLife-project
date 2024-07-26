@@ -11,22 +11,38 @@ export default function Vans() {
             .then(data => setVans(data.vans))
     }, [])
 
-    
+    const uniqueTags = [...new Set(vans.map(van => van.type))];
+
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
 
     const vanElements = vans.map(van => (
-        <div key={van.id} className="van-tile">
-            <img className="van-img" src={van.imageUrl} />
-            <div className="van-info">
-                <h3>{van.name}</h3>
-                <p>${van.price}<span>/day</span></p>
+        <div className="van-element">
+            <div key={van.id}>
+                <img className="van-img" src={van.imageUrl} />
+                <div className="van-info">
+                    <h3 className="van-tile">{van.name}</h3>
+                    <p>${van.price}<span>/day</span></p>
+                </div>
+                <p className={`tag van-type-tag ${van.type} selected`}>{capitalizeFirstLetter(van.type)}</p>
             </div>
-            <p className={`van-type ${van.type} selected`}>{van.type}</p>
         </div>
     ))
 
     return (
         <div className="main-vans">
             <h1>Explore our van options</h1>
+
+            <div className="tag-section">
+                <div className="tag-list">
+                    {uniqueTags.map(tag => (
+                        <span key={tag} className="tag tag-list-el">{capitalizeFirstLetter(tag)}</span>
+                    ))}
+                </div>
+                <p><u>Clear filters</u></p>
+            </div>
+
             <div className="van-list">
                 { vanElements }
             </div>

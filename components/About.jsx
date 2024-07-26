@@ -5,8 +5,11 @@ import imgAbout from "../assets/imgAbout.png"
 export default function About() {
     return (
         <main className="main-about">
+
             <img src={imgAbout} className="about-img"/>
+
             <div className="copy-section">
+                
                 <div className="about-main-copy">
                     <h1>Don’t squeeze in a sedan when you could relax in a van.</h1>
                     <div className="about-paragraph">
@@ -14,12 +17,14 @@ export default function About() {
                         <p>Our team is full of vanlife enthusiasts who know firsthand the magic of touring the world on 4 wheels.</p>
                     </div>
                 </div>
+
                 <div className="about-vans-container">
                     <h2>Your destination is waiting.<br />Your van is ready.</h2>
                     <Link to="/vans" className="link">
                         <button className="btn-black-s">Explore our vans</button>
                     </Link>
                 </div>
+
             </div>
         </main>
     )
