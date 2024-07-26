@@ -21,10 +21,14 @@ html, body {
     border-radius: 0.5rem;
 }
 
+.home-btn-orange {
+    width: 100%;
+}
+
 .btn-orange {
     margin-top: 1rem;
     background-color: #FF8C38;
-    color: inherit;
+    color: #fff;
     width: 100%;
 }
 
@@ -138,4 +142,10 @@ html, body {
 .about-vans-container > h2 {
     margin: 0;
     padding-bottom: 1.5rem;
+}
+
+/* Vans page */
+
+.van-img {
+ width: 15rem;
 }

@@ -6,6 +6,8 @@ import About from "./components/About"
 import Vans from './components/Vans'
 import Footer from "./components/Footer"
 
+import "./server"
+
 export default function App() {
     return (
         <BrowserRouter>
