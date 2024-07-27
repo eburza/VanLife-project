@@ -65,7 +65,11 @@ html, body {
 
 .vanlife-logo {
     width: 10rem;
+}
+
+.vanlife-logo:hover {
     cursor: pointer;
+
 }
 
 .nav-links {
@@ -85,6 +89,7 @@ html, body {
     /*position: absolute;*/
     /* bottom: 0; */
     width: 100%;
+    margin-top: 3rem;
 }
 
 /* Home page */
@@ -121,7 +126,7 @@ html, body {
 
 .copy-section {
     background-color: #FFF7ED;
-    padding: 3rem 2rem;
+    padding: 3rem 2rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -137,7 +142,6 @@ html, body {
     width: 80%;
     padding: 1.5rem 2rem;
     border-radius: 0.5rem;
-    margin-bottom: 1rem;;
 }
 
 .about-vans-container > h2 {
@@ -148,11 +152,16 @@ html, body {
 /* Vans page */
 
 .main-vans {
-    padding: 2rem;
+    padding: 0 2rem;
+}
+
+.main-vans-title {
+    margin: 1rem 0 2rem;
 }
 
 .tag-section {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: top;
     margin-bottom: 1.5rem;
@@ -171,14 +180,28 @@ html, body {
     font-weight: 500;
 }
 
+.tag:hover {
+    cursor: pointer;
+}
+
+.filters-reset:hover {
+    font-weight: 600;
+    cursor: pointer;
+}
+
 .tag-list-el {
     background-color: #FFEAD0;
     color: #4D4D4D;
 }
 
+.tag-list-el:hover {
+    background-color: #FFCC8D;
+}
+
 .van-type-tag {
     color: #FFEAD0;
     display: inline-block;
+    margin: -1rem 0 0;
 }
 
 .simple {
@@ -195,14 +218,18 @@ html, body {
 
 .van-list {
     display: grid;
-    grid-gap: 1.5rem;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.van-element:hover {
+    border: 3px solid transparent;
+    cursor: pointer;
 }
 
 .van-tile {
-    margin: 0;
     font-size: 1.5em;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .van-img {
@@ -217,3 +244,14 @@ html, body {
     align-items: center;
 }
 
+.van-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.van-list-price {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-bottom: -1rem;
+}

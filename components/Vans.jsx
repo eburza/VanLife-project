@@ -18,21 +18,24 @@ export default function Vans() {
     }
 
     const vanElements = vans.map(van => (
-        <div className="van-element">
-            <div key={van.id}>
+        <div className="van-list-element">
+            <div key={van.id} className="van-element">
                 <img className="van-img" src={van.imageUrl} />
                 <div className="van-info">
                     <h3 className="van-tile">{van.name}</h3>
-                    <p>${van.price}<span>/day</span></p>
+                    <div className="van-price">
+                        <p className="van-list-price">${van.price}</p>
+                        <p className="van-list-day">/day</p>
+                    </div>
                 </div>
-                <p className={`tag van-type-tag ${van.type} selected`}>{capitalizeFirstLetter(van.type)}</p>
             </div>
+            <p className={`tag van-type-tag ${van.type} selected`}>{capitalizeFirstLetter(van.type)}</p>
         </div>
     ))
 
     return (
         <div className="main-vans">
-            <h1>Explore our van options</h1>
+            <h1 className="main-vans-title">Explore our van options</h1>
 
             <div className="tag-section">
                 <div className="tag-list">
@@ -40,7 +43,7 @@ export default function Vans() {
                         <span key={tag} className="tag tag-list-el">{capitalizeFirstLetter(tag)}</span>
                     ))}
                 </div>
-                <p><u>Clear filters</u></p>
+                <p className="filters-reset"><u>Clear filters</u></p>
             </div>
 
             <div className="van-list">
