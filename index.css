@@ -201,7 +201,7 @@ html, body {
 .van-type-tag {
     color: #FFEAD0;
     display: inline-block;
-    margin: -1rem 0 0;
+    margin: 0;
 }
 
 .simple {
@@ -223,8 +223,11 @@ html, body {
 }
 
 .van-element:hover {
-    border: 3px solid transparent;
     cursor: pointer;
+}
+
+.van-element:hover > .van-img {
+    transform: scale(1.05)
 }
 
 .van-tile {
@@ -242,6 +245,7 @@ html, body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: -0.75rem;
 }
 
 .van-price {
