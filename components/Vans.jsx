@@ -1,5 +1,6 @@
 import React from "react"
-
+import { Link } from "react-router-dom"
+import { capitalizeFirstLetter } from "../function/capitalizeFirstLetter"
 
 export default function Vans() {
 
@@ -13,22 +14,20 @@ export default function Vans() {
 
     const uniqueTags = [...new Set(vans.map(van => van.type))];
 
-    function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-
     const vanElements = vans.map(van => (
-        <div key={van.id} className="van-element">
-            <img className="van-img" src={van.imageUrl} />
-            <div className="van-info">
-                <h3 className="van-tile">{van.name}</h3>
-                <div className="van-price">
-                    <p className="van-list-price">${van.price}</p>
-                    <p className="van-list-day">/day</p>
+        <Link to={`/vans/${van.id}`} aria-label={`View details for ${van.name}, priced at $${van.price} per day`}>
+            <div key={van.id} className="van-element">
+                <img className="van-img" src={van.image} alt={`Image of ${van.name}`}/>
+                <div className="van-info">
+                    <p className="van-title">{van.name}</p>
+                    <div className="van-price">
+                        <p className="van-list-price">${van.price}</p>
+                        <p className="van-list-day">/day</p>
+                    </div>
                 </div>
+                <p className={`tag van-type-tag ${van.type} selected`}>{capitalizeFirstLetter(van.type)}</p>
             </div>
-            <p className={`tag van-type-tag ${van.type} selected`}>{capitalizeFirstLetter(van.type)}</p>
-        </div>
+        </Link>
     ))
 
     return (

@@ -6,7 +6,7 @@ export default function About() {
     return (
         <main className="main-about">
 
-            <img src={imgAbout} className="about-img"/>
+            <img src={imgAbout} className="about-img" alt={`Image of a man sitting on van roof, while looking on starry sky`}/>
 
             <div className="copy-section">
                 
