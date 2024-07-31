@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { NavLink, Link } from "react-router-dom"
 import logo from "../assets/VanLife-logo.svg";
 
 
@@ -12,8 +12,24 @@ export default function Header() {
             </Link>
 
             <nav className="nav-links">
-                <Link to="/about" className="link">About</Link>
-                <Link to="/vans" className="link">Vans</Link>
+                <NavLink 
+                to="/host" 
+                className={({isActive}) => isActive ? "active-link" : null }
+                >
+                    Host
+                </NavLink>
+                <NavLink 
+                to="/about" 
+                className={({isActive}) => isActive ? "active-link" : null }                
+                >
+                    About
+                </NavLink>
+                <NavLink 
+                to="/vans" 
+                className={({isActive}) => isActive ? "active-link" : null }
+                >
+                    Vans
+                </NavLink>
             </nav>
             
         </header>

@@ -4,7 +4,7 @@ import imgAbout from "../assets/imgAbout.png"
 
 export default function About() {
     return (
-        <main className="main-about">
+        <div className="main-about">
 
             <img src={imgAbout} className="about-img" alt={`Image of a man sitting on van roof, while looking on starry sky`}/>
 
@@ -26,6 +26,6 @@ export default function About() {
                 </div>
 
             </div>
-        </main>
+        </div>
     )
 }

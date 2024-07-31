@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { capitalizeFirstLetter } from "../function/capitalizeFirstLetter"
+import { capitalizeFirstLetter } from "../../function/capitalizeFirstLetter"
 
 export default function Vans() {
 

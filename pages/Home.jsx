@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 export default function Home() {
     return (
-        <main className="home-main">
+        <div className="home-main">
 
             <h1>You got the travel plans, we got the travel vans.</h1>
 
@@ -13,6 +13,6 @@ export default function Home() {
                 <button className="btn-orange">Find your van</button>
             </Link>
             
-        </main>
+        </div>
     )
 }

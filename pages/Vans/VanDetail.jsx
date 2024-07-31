@@ -1,6 +1,6 @@
 import React from "react"
 import { useParams, Link } from "react-router-dom"
-import { capitalizeFirstLetter } from "../function/capitalizeFirstLetter"
+import { capitalizeFirstLetter } from "../../function/capitalizeFirstLetter.js/"
 import { IoArrowBackOutline } from "react-icons/io5";
 
 export default function VanDetail() {
