@@ -18,7 +18,7 @@ export default function VanDetail() {
     return (
         <div className="van-info-page">
 
-            <Link to="/vans">
+            <Link to=".." relative="path">
                 <div className="back-to-vans-page">
                     <IoArrowBackOutline />
                     <p>Back to all vans</p>

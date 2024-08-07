@@ -25,9 +25,14 @@ export default function HostVans() {
     ))
 
     return (
-        <div className="host-van-list">
-            <h1>Your listed vans</h1>
-            { hostVanList }
+        <div>
+            { hostVans.length > 0 ?
+                (<section className="host-van-list">
+                    <h1>Your listed vans</h1>
+                    { hostVanList }
+                </section>) :
+                ( <p className="host-van-list-empty">Loading...</p>)
+            }
         </div>
     )
 }

@@ -4,8 +4,31 @@
 
 html, body {
     margin: 0;
-    font-family: inter, sans-serif;
+    padding: 0;
     background-color: #FFF7ED;
+    font-family: "Inter", sans-serif;
+    height: 100%;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.site-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 a {
@@ -66,6 +89,7 @@ nav a:hover,
     color: #161616;
     text-decoration: underline;
     cursor: pointer;
+    font-weight: 600;
 }
 
 nav a {
@@ -91,28 +115,32 @@ nav a {
 /* footer */
 
 footer {
-    background-color: #252525;
+    background-color: #161616;
     color: #AAAAAA;
+    height: 74px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 1.5rem;
+    align-items: center;
+    margin-top: auto;
+    font-weight: 500;
 }
 
 /* Home page */
+
 .home-main {
-    height: 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 0 2rem;
     gap: 1rem;
-    /*: linear-gradient(0deg, rgba(0, 0, 0, 0.46), rgba(0, 0, 0, 0.46)), url("./assets/img-home.png") no-repeat center center;*/
     background-image: url(assets/img-home.png); 
     background-size: cover;
+    background-position: center;
     color: #FFF;
 }
+
 
 .home-main > h1 {
     margin: 0;
@@ -236,7 +264,7 @@ footer {
 }
 
 .van-element:hover > .van-img {
-    transform: scale(1.05)
+    transform: scale(1.05);
 }
 
 .van-title,
@@ -339,6 +367,12 @@ footer {
     gap: 1.5rem;
 }
 
+.host-van-list-empty {
+    padding: 2rem 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
 .host-van-list-element {
     background-color: #fff;
     padding: 1.25rem 2rem;
@@ -374,4 +408,73 @@ footer {
 .host-van-list-price {
     color: #4D4D4D;
     font-size: 1.25rem;
+}
+
+/* host page - vans - details */
+
+.host-van-details {
+    margin-top: 2rem;
+}
+
+.host-van-info-page {
+    padding: 2rem;
+    background-color: #fff;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.host-van-info-page nav {
+    font-size: 1em;
+}
+
+.selected-van-details {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 150px auto;
+}
+
+.selected-van-img {
+    width: 150px;
+    border-radius: 0.25rem;
+}
+
+.selected-van-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.selected-van-type {
+    padding: 0.5rem 1rem;
+    font-size: 0.75em;
+    display: block;
+    margin: 0 auto 0 0;
+}
+
+.selected-van-copy .van-info-title {
+    margin: 1rem 0;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.host-details-subp {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.host-details-subp p{
+    margin: 0;
+}
+
+.host-details-subp .van-info-price {
+    font-size: 1.5em;
+}
+
+.host-details-subp .selected-van-img {
+    width: 100px;
 }
