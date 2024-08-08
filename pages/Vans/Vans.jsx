@@ -1,10 +1,14 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link, useSearchParams } from "react-router-dom"
 import { capitalizeFirstLetter } from "../../function/capitalizeFirstLetter"
 
 export default function Vans() {
 
+    const [ searchParams, setSearchParams ] = useSearchParams()
     const [ vans, setVans ] = React.useState([])
+
+    //const typeSearch = searchParams.get("type")
+    const typeSearch = searchParams.get("type")?.split(",") || []
 
     React.useEffect(() => {
         fetch("/api/vans")
@@ -12,10 +16,21 @@ export default function Vans() {
             .then(data => setVans(data.vans))
     }, [])
 
+    //const displayVans = typeSearch
+    //    ? vans.filter( van => van.type === typeSearch )
+    //    : vans
+
+    const displayVans = typeSearch.length > 0
+    ? vans.filter(van => typeSearch.includes(van.type))
+    : vans
+
     const uniqueTags = [...new Set(vans.map(van => van.type))];
 
-    const vanElements = vans.map(van => (
-        <Link to={`/vans/${van.id}`} aria-label={`View details for ${van.name}, priced at $${van.price} per day`}>
+    const vanElements = displayVans.map(van => (
+        <Link 
+        to={van.id} 
+        state={searchParams.toString() ? { search: `?${searchParams.toString()}` } : {}}
+        aria-label={`View details for ${van.name}, priced at $${van.price} per day`}>
             <div key={van.id} className="van-element">
                 <img className="van-img" src={van.image} alt={`Image of ${van.name}`}/>
                 <div className="van-info">
@@ -30,6 +45,65 @@ export default function Vans() {
         </Link>
     ))
 
+    //function handleFilterChange( key, value ) {
+    //    setSearchParams( prevSearchParams => {
+    //        if ( value === null ){
+    //            prevSearchParams.delete(key)
+    //        } else {
+    //            prevSearchParams.set(key, value)
+    //        }
+    //        return prevSearchParams
+    //    })
+    //} 
+
+    function handleFilterChange(tag) {
+        setSearchParams(prevSearchParams => {
+            const currentTags = prevSearchParams.get("type")?.split(",") || []
+            let updatedTags
+
+            if (currentTags.includes(tag)) {
+                // If the tag is already selected, remove it
+                updatedTags = currentTags.filter(t => t !== tag)
+            } else {
+                // Otherwise, add it to the list
+                updatedTags = [...currentTags, tag]
+            }
+
+            if (updatedTags.length > 0) {
+                prevSearchParams.set("type", updatedTags.join(","))
+            } else {
+                prevSearchParams.delete("type")
+            }
+
+            return prevSearchParams
+        })
+    }
+
+    //return (
+    //    <div className="main-vans">
+    //        <h1 className="main-vans-title">Explore our van options</h1>
+
+    //        <div className="tag-section">
+    //            <div className="tag-list">
+    //                {uniqueTags.map(tag => (
+    //                    <p onClick={ () => handleFilterChange("type", `${tag}`)} key={tag} className={`tag tag-list-el tag-list-el-${tag} ${typeSearch === tag ? `active active-${tag}` : ''}`}>{capitalizeFirstLetter(tag)}</p>
+    //                ))}
+    //            </div>
+//
+    //            {
+    //                typeSearch && (
+    //                    <p onClick={ () => setSearchParams({})} className="filters-reset"><u>Clear filters</u></p>
+    //                )
+    //            }
+//
+    //        </div>
+//
+    //        <div className="van-list">
+    //            { vanElements }
+    //        </div>
+    //    </div>
+    //)
+
     return (
         <div className="main-vans">
             <h1 className="main-vans-title">Explore our van options</h1>
@@ -37,27 +111,39 @@ export default function Vans() {
             <div className="tag-section">
                 <div className="tag-list">
                     {uniqueTags.map(tag => (
-                        <span key={tag} className="tag tag-list-el">{capitalizeFirstLetter(tag)}</span>
+                        <p 
+                            onClick={() => handleFilterChange(tag)} 
+                            key={tag} 
+                            className={`tag tag-list-el tag-list-el-${tag} ${typeSearch.includes(tag) ? `active active-${tag}` : ''}`}
+                        >
+                            {capitalizeFirstLetter(tag)}
+                        </p>
                     ))}
                 </div>
-                <p className="filters-reset"><u>Clear filters</u></p>
+
+                {typeSearch.length > 0 && (
+                    <p onClick={() => setSearchParams({})} className="filters-reset"><u>Clear filters</u></p>
+                )}
+
             </div>
 
             <div className="van-list">
-                { vanElements }
+                {vanElements}
             </div>
         </div>
     )
 }
 
 
-/**
- * {
-    * id: "1", 
-    * name: "Modest Explorer", 
-    * price: 60, 
-    * description: "The Modest Explorer is a van designed to get you out of the house and into nature. This beauty is equipped with solar panels, a composting toilet, a water tank and kitchenette. The idea is that you can pack up your home and escape for a weekend or even longer!", 
-    * imageUrl: "https://assets.scrimba.com/advanced-react/react-router/modest-explorer.png", 
-    * type: "simple"
- * }
- */
+
+
+/*
+<div className="tag-section">
+    <div className="tag-list">
+        {uniqueTags.map(tag => (
+            <p onClick={ () => setSearchParams({type: `${tag}`})} key={tag} className="tag tag-list-el">{capitalizeFirstLetter(tag)}</p>
+        ))}
+    </div>
+    <p onClick={ () => setSearchParams({})} className="filters-reset"><u>Clear filters</u></p>
+</div>
+*/

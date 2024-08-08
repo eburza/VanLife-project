@@ -200,7 +200,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: top;
+    align-items: center;
     margin-bottom: 1.5rem;
 }
 
@@ -230,15 +230,48 @@ footer {
     background-color: #FFEAD0;
     color: #4D4D4D;
 }
-
+/*
 .tag-list-el:hover {
+    color: #4D4D4D;
     background-color: #FFCC8D;
 }
-
+*/
 .van-type-tag {
     color: #FFEAD0;
     display: inline-block;
     margin: 0;
+}
+
+.tag-list-el:hover {
+    color: #FFEAD0;
+}
+
+.tag-list-el-simple:hover  {
+    background-color: #E17654;
+}
+
+.tag-list-el-rugged:hover  {
+    background-color: #115E59;
+}
+
+.tag-list-el-luxury:hover  {
+    background-color: #161616;
+}
+
+.active {
+    color: #FFEAD0;
+}
+
+.active-simple {
+    background-color: #E17654;
+}
+
+.active-rugged {
+    background-color: #115E59;
+}
+
+.active-luxury {
+    background-color: #161616;
 }
 
 .simple {
