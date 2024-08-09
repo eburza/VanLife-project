@@ -2,21 +2,49 @@ import React from "react"
 import { Link, useParams, NavLink, Outlet } from "react-router-dom"
 import { IoArrowBackOutline } from "react-icons/io5";
 import { capitalizeFirstLetter } from "../../function/capitalizeFirstLetter.js/"
+import { getHostVans } from "../../api"
 
 export default function HostVanDetail() {
 
     const [ selectedVan, setSelectedVan ] = React.useState(null)
+    const [ loading, setLoading ] = React.useState(false)
+    const [ error, setError ] = React.useState(null)
 
     const params = useParams()
 
-    React.useEffect( () => {
-        fetch(`/api/host/vans/${params.id}`)
-            .then( res => res.json() )
-            .then( data => setSelectedVan(data.vans) )
-    }, [])
+    React.useEffect(() => {
+        async function loadVan() {
+            setLoading(true);
+            try {
+                const data = await getHostVans();
+                const selectedVan = data.find(van => van.id === params.id);
+                if (selectedVan) {
+                    setSelectedVan(selectedVan);
+                } else {
+                    setError(new Error("Van not found"));
+                }
+            } catch (err) {
+                setError(err);
+            } finally {
+                setLoading(false);
+            }
+        }
+    
+        loadVan();
+    }, [params.id]);
 
     if(!selectedVan){
         return <p>Loading...</p>
+    }
+
+    if (loading) {
+        return( 
+            <h1 aria-live="polite">Loading...</h1>
+        )
+    }
+
+    if (error) {
+        return <h1 aria-live="assertive">There was an error: {error.message}</h1>
     }
 
     return (

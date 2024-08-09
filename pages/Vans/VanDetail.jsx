@@ -2,24 +2,51 @@ import React from "react"
 import { useParams, Link, useLocation } from "react-router-dom"
 import { capitalizeFirstLetter } from "../../function/capitalizeFirstLetter.js/"
 import { IoArrowBackOutline } from "react-icons/io5";
+import { getVans } from "../../api"
 
 export default function VanDetail() {
 
     const [ van, setVan] = React.useState(null)
+    const [ loading, setLoading ] = React.useState(false)
+    const [ error, setError ] = React.useState(null)
     const location = useLocation()
     const params = useParams()
 
-    console.log(location)
-
-    React.useEffect( () => {
-        fetch(`/api/vans/${params.id}`)
-            .then( res => res.json() )
-            .then( data => setVan(data.vans))
-    }, [params.id])
+    React.useEffect(() => {
+        async function loadVan() {
+            setLoading(true);
+            try {
+                const data = await getVans();
+                const selectedVan = data.find(van => van.id === params.id);
+                if (selectedVan) {
+                    setVan(selectedVan);
+                } else {
+                    setError(new Error("Van not found"));
+                }
+            } catch (err) {
+                setError(err);
+            } finally {
+                setLoading(false);
+            }
+        }
+    
+        loadVan();
+    }, [params.id]);
+    
 
     //const searchLink = location.state && location.state.search || ""
     const searchLink = location.state?.search || ""
     const hasFilters = !!searchLink
+
+    if (loading) {
+        return( 
+            <h1 aria-live="polite">Loading...</h1>
+        )
+    }
+
+    if (error) {
+        return <h1 aria-live="assertive">There was an error: {error.message}</h1>
+    }
 
     return (
         <div className="van-info-page">
