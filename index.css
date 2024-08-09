@@ -46,6 +46,7 @@ button:hover {
 /* buttons */
 
 .btn-orange,
+.btn-black,
 .btn-black-s {
     border: none;
     font-family: inherit;
@@ -55,7 +56,7 @@ button:hover {
     border-radius: 0.5rem;
 }
 
-.home-btn-orange {
+.home-btn {
     width: 100%;
 }
 
@@ -63,6 +64,13 @@ button:hover {
     margin-top: 1rem;
     background-color: #FF8C38;
     color: #fff;
+    width: 100%;
+}
+
+.btn-black {
+    margin-top: 1rem;
+    color: #FFF;
+    background-color: #161616;
     width: 100%;
 }
 
@@ -510,4 +518,20 @@ footer {
 
 .host-details-subp .selected-van-img {
     width: 100px;
+}
+
+/* not found page */
+
+.main-not-found {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    margin-top: -2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-not-found h1 {
+    font-size: 1.75em;
 }
