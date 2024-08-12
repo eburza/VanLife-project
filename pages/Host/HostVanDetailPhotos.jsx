@@ -7,7 +7,7 @@ export default function HostVanDetailPhotos() {
 
     return (
         <section className="host-details-subp">
-            <img className="selected-van-img" src={`../../${image}`} alt={`image of ${name}`} />
+            <img className="selected-van-img" src={image} alt={`image of ${name}`} />
         </section>
     )
 }

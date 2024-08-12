@@ -62,7 +62,7 @@ export default function HostVanDetail() {
             <div className="host-van-info-page">
 
                 <div className="selected-van-details">
-                    <img className="selected-van-img" src={`../../${selectedVan.image}`} alt={`image of ${selectedVan.name}`} />
+                    <img className="selected-van-img" src={selectedVan.image} alt={`image of ${selectedVan.name}`} />
                     <div className="selected-van-copy">
                         <p className={`selected-van-type tag van-type-tag ${selectedVan.type}`} >{capitalizeFirstLetter(selectedVan.type)}</p>
                         <p className="van-title van-info-title">{selectedVan.name}</p>
