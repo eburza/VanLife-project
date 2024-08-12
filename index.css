@@ -138,6 +138,10 @@ nav a {
     font-size: 1.75rem;
 }
 
+.host-nav {
+    margin-bottom: 2rem;
+}
+
 /*dropdown menu */
 .dropbtn {
     padding: 0.5rem;
@@ -460,10 +464,14 @@ footer {
 /* host page - vans */
 
 .host-van-list {
-    padding: 2rem 0;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+}
+
+.host-van-list h1 {
+    margin: 0;
+    font-size: 2em;
 }
 
 .host-van-list-empty {
@@ -510,10 +518,6 @@ footer {
 }
 
 /* host page - vans - details */
-
-.host-van-details {
-    margin-top: 2rem;
-}
 
 .host-van-info-page {
     padding: 2rem;
@@ -633,4 +637,134 @@ footer {
 
 .login-error {
     color: #E17654;
+}
+
+/* host reviews */
+
+.host-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.rating-review-star {
+    margin: 0 0.4rem;
+}
+
+.host-rating p,
+.host-rating h1 {
+    margin: 0;
+    padding: 0;
+}
+
+.host-reviews {
+    color: #161616;
+}
+
+.host-reviews .top-text {
+    display: flex;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.host-reviews .top-text > h2 {
+    font-weight: 700;
+    font-size: 32px;
+    margin: 0;
+    margin-right: 20px;
+}
+
+.host-reviews .top-text > p {
+    margin: 0;
+    color: #4d4d4d;
+}
+
+.host-reviews .top-text > p span {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.host-reviews .review {
+    margin-block: 25px;
+}
+
+.host-reviews .review .info {
+    display: flex;
+}
+
+.host-reviews .review .name {
+    color: #161616;
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+.host-reviews .review .date {
+    color: #8c8c8c;
+}
+
+.host-reviews hr {
+    background-color: #c7c7c7;
+    height: 1px;
+    border: 0;
+}
+
+.host-reviews .review-star {
+    color: #ff8c38;
+    margin-right: 5px;
+}
+/* chart */
+.chart-element {
+    display: grid;
+    grid-template-columns: 80px auto 80px;
+    width: 100%; 
+    gap: 0.5rem;
+}
+
+.bars-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.chart-bar-w {
+    position: relative;
+    height: 20px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.chart-bar-o {
+    height: 100%;
+    background-color: #ff8c38;
+    border-radius: 5px 0 0 5px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.chart-label {
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+    font-size: 1em;
+    font-weight: 400;
+    color: #161616;
+}
+
+.chart-label p{
+    margin: 0;
+}
+
+.chart-label-precentage {
+    margin-left: 0.75rem;
+    text-align: left;
+}
+
+.chart-label-star {
+    margin-right: 0.75rem;
+    text-align: right;
 }

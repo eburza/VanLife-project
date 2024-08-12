@@ -7,7 +7,7 @@ export default function HostLayout() {
     return (
         <div className="page">
             
-        <nav className="nav-links">
+        <nav className="nav-links host-nav">
             <NavLink 
             to="."
             className={({isActive}) => isActive ? "active-link" : null }
