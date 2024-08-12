@@ -25,6 +25,13 @@ body {
     flex-direction: column;
 }
 
+.section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
 main {
     flex: 1;
     display: flex;
@@ -81,6 +88,11 @@ button:hover {
 
 }
 
+button:disabled {
+    background-color: #FFCC8D;
+    color: #4D4D4D;
+  }
+
 /* navigation */
 
 .navigation {
@@ -116,9 +128,55 @@ nav a {
 
 .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     font-size: 1.2rem;
+    align-items: center;
 }
+
+.header-avatar {
+    color: #4D4D4D;
+    font-size: 1.75rem;
+}
+
+/*dropdown menu */
+.dropbtn {
+    padding: 0.5rem;
+    margin-right: -0.5rem;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #FFCC8D;
+    color: #FFF;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    z-index: 1;
+    transform: translate(-50%, 0);
+  }
+  
+  .dropdown-content p {
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #161616;
+    padding: 0.75rem 1rem;
+    display: block;
+    margin: 0;
+    white-space: nowrap;
+  }
+  
+  .dropdown-content p:hover {
+    font-weight: 600;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;}
+  
 
 /* footer */
 
@@ -534,4 +592,45 @@ footer {
 
 .main-not-found h1 {
     font-size: 1.75em;
+}
+
+/* login page */
+
+.login-container {
+    justify-content: center;
+    align-items: center;
+    margin-top: -2rem;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.login-form > input {
+    padding: 1rem;
+    font-family: inherit;
+    font-size: 1em;
+}
+
+.input-email {
+    border: 1px solid #D1D5DB;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.input-password {
+    border-width: 0;
+    border-radius: 0 0 0.5rem 0.5rem;
+    border-bottom: 1px solid #D1D5DB;
+    border-right: 1px solid #D1D5DB;
+    border-left: 1px solid #D1D5DB;
+}
+
+.login-btn {
+    margin-top: 2rem;
+}
+
+.login-error {
+    color: #E17654;
 }
