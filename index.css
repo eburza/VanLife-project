@@ -648,13 +648,13 @@ footer {
 }
 
 .rating-review-star {
-    margin: 0 0.4rem;
+    margin: 0 0.5rem;
+    font-size: 1.25rem;
 }
 
 .host-rating p,
 .host-rating h1 {
     margin: 0;
-    padding: 0;
 }
 
 .host-reviews {
