@@ -2,7 +2,7 @@ import React from "react"
 import { useParams, Link, useLocation } from "react-router-dom"
 import { capitalizeFirstLetter } from "../../function/capitalizeFirstLetter.js/"
 import { IoArrowBackOutline } from "react-icons/io5";
-import { getVans } from "../../api"
+import { getVan } from "../../api"
 
 export default function VanDetail() {
 
@@ -14,24 +14,24 @@ export default function VanDetail() {
 
     React.useEffect(() => {
         async function loadVan() {
-            setLoading(true);
+            setLoading(true)
             try {
-                const data = await getVans();
-                const selectedVan = data.find(van => van.id === params.id);
-                if (selectedVan) {
-                    setVan(selectedVan);
+                const vanData = await getVan(params.id)
+                if (vanData) {
+                    setVan(vanData)
                 } else {
-                    setError(new Error("Van not found"));
+                    setError(new Error("Van not found"))
                 }
             } catch (err) {
-                setError(err);
+                setError(err)
             } finally {
-                setLoading(false);
+                setLoading(false)
             }
         }
     
-        loadVan();
-    }, [params.id]);
+        loadVan()
+    }, [params.id])
+    
     
 
     //const searchLink = location.state && location.state.search || ""

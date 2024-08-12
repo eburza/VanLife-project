@@ -1,25 +1,23 @@
-import React from "react"
-import { Link, useParams, NavLink, Outlet } from "react-router-dom"
+import React from "react";
+import { Link, useParams, NavLink, Outlet } from "react-router-dom";
 import { IoArrowBackOutline } from "react-icons/io5";
-import { capitalizeFirstLetter } from "../../function/capitalizeFirstLetter.js/"
-import { getHostVans } from "../../api"
+import { capitalizeFirstLetter } from "../../function/capitalizeFirstLetter.js/";
+import { getVan } from "../../api";
 
 export default function HostVanDetail() {
+    const [selectedVan, setSelectedVan] = React.useState(null);
+    const [loading, setLoading] = React.useState(false);
+    const [error, setError] = React.useState(null);
 
-    const [ selectedVan, setSelectedVan ] = React.useState(null)
-    const [ loading, setLoading ] = React.useState(false)
-    const [ error, setError ] = React.useState(null)
-
-    const params = useParams()
+    const params = useParams();
 
     React.useEffect(() => {
         async function loadVan() {
             setLoading(true);
             try {
-                const data = await getHostVans();
-                const selectedVan = data.find(van => van.id === params.id);
-                if (selectedVan) {
-                    setSelectedVan(selectedVan);
+                const vanData = await getVan(params.id); // Fetch the van directly by id
+                if (vanData) {
+                    setSelectedVan(vanData);
                 } else {
                     setError(new Error("Van not found"));
                 }
@@ -29,27 +27,24 @@ export default function HostVanDetail() {
                 setLoading(false);
             }
         }
-    
+
         loadVan();
     }, [params.id]);
 
-    if(!selectedVan){
-        return <p>Loading...</p>
-    }
-
     if (loading) {
-        return( 
-            <h1 aria-live="polite">Loading...</h1>
-        )
+        return <h1 aria-live="polite">Loading...</h1>;
     }
 
     if (error) {
-        return <h1 aria-live="assertive">There was an error: {error.message}</h1>
+        return <h1 aria-live="assertive">There was an error: {error.message}</h1>;
+    }
+
+    if (!selectedVan) {
+        return <p>Loading...</p>;
     }
 
     return (
         <section className="host-van-details">
-
             <div className="host-van-details-back">
                 <Link to=".." relative="path">
                     <div className="back-to-vans-page host-van-detail-back">
@@ -60,11 +55,12 @@ export default function HostVanDetail() {
             </div>
 
             <div className="host-van-info-page">
-
                 <div className="selected-van-details">
                     <img className="selected-van-img" src={selectedVan.image} alt={`image of ${selectedVan.name}`} />
                     <div className="selected-van-copy">
-                        <p className={`selected-van-type tag van-type-tag ${selectedVan.type}`} >{capitalizeFirstLetter(selectedVan.type)}</p>
+                        <p className={`selected-van-type tag van-type-tag ${selectedVan.type}`}>
+                            {capitalizeFirstLetter(selectedVan.type)}
+                        </p>
                         <p className="van-title van-info-title">{selectedVan.name}</p>
                         <p className="van-info-price"><span>${selectedVan.price}</span>/day</p>
                     </div>
@@ -72,21 +68,21 @@ export default function HostVanDetail() {
 
                 <nav className="nav-links">
                     <NavLink 
-                    to="."
-                    className={({isActive}) => isActive ? "active-link" : null }
-                    end
+                        to="."
+                        className={({ isActive }) => (isActive ? "active-link" : null)}
+                        end
                     >
                         Details
                     </NavLink>
                     <NavLink 
-                    to="pricing"
-                    className={({isActive}) => isActive ? "active-link" : null }
+                        to="pricing"
+                        className={({ isActive }) => (isActive ? "active-link" : null)}
                     >
                         Pricing
                     </NavLink>
                     <NavLink 
-                    to="photos"
-                    className={ ({isActive}) => isActive ? "active-link" : null }
+                        to="photos"
+                        className={({ isActive }) => (isActive ? "active-link" : null)}
                     >
                         Photos
                     </NavLink>
@@ -95,5 +91,5 @@ export default function HostVanDetail() {
                 <Outlet context={selectedVan} />
             </div>
         </section>
-    )
+    );
 }
