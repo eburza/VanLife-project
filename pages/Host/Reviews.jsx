@@ -1,6 +1,6 @@
 import React from "react"
 import { BsStarFill } from "react-icons/bs"
-import { reviewsData } from "../../function/reviewsData"
+import { reviewsData } from "../../data/reviewsData"
 import { calculateAverage } from "../../function/calculateAverage"
 import HorizontalBarChart from "../../components/HorizontalBarChart"
 
@@ -24,7 +24,7 @@ export default function Reviews() {
     }
 
     return (
-            <section className="host-reviews">
+            <section className="host-section">
 
                 <div className="top-text">
                     <h2>Your reviews</h2>

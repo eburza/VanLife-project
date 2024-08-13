@@ -1,7 +1,7 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement } from 'chart.js';
-import { reviewsData } from '../function/reviewsData';  // Adjust the path as necessary
+import { reviewsData } from '../data/reviewsData';  // Adjust the path as necessary
 
 // Register necessary components
 ChartJS.register(CategoryScale, LinearScale, BarElement);
