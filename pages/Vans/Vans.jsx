@@ -130,7 +130,8 @@ export default function Vans() {
     }
 
     if (error) {
-        return <h1 aria-live="assertive">There was an error: {error.message}</h1>
+        console.error("Error occurred:", error);
+        return <h1 aria-live="assertive">There was an error: {error.message || "Unknown error occurred"}</h1>;
     }
 
     return (

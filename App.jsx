@@ -17,12 +17,14 @@ import HostVanDetailPhotos from "./pages/Host/HostVanDetailPhotos"
 import Income from "./pages/Host/Income"
 import Reviews from "./pages/Host/Reviews"
 import AuthorizationRequired from "./components/AuthorizationRequired"
+import { HostDataProvider } from './context/HostDataContext'
 
 
 import "./server"
 
 export default function App() {
     return (
+      <HostDataProvider>
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Layout />}>
@@ -53,5 +55,6 @@ export default function App() {
                 </Route>
             </Routes>
         </BrowserRouter>
+      </HostDataProvider>
     )
   }

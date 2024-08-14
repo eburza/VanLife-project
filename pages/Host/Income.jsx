@@ -1,59 +1,27 @@
-import React from "react"
-import { useState, useEffect } from "react"
-import { transactionsData } from "../../data/transactionsData"
-import { calculateSum } from "../../function/calculateSum"
+import React, { useState, useEffect } from "react"
 import VerticalBarChart from "../../components/VerticalBarChart"
+import { useHostData } from "../../context/HostDataContext"
 
 export default function Income() {
+    const { hostData, formattedTransactions, transactionsAmount, error, loading } = useHostData()
 
-    const [formattedTransactions, setFormattedTransactions] = useState("")
-
-    useEffect(() => {
-        const transactionSum = () => {
-            const arrayData = transactionsData.map(({ amount }) => amount)
-            const transactions = calculateSum(arrayData)
-
-            let formatted
-
-            if (transactions - Math.floor(transactions) !== 0) {
-                formatted = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 }).format(transactions)
-            } else {
-                formatted = Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(transactions)
-            }
-            
-            setFormattedTransactions(formatted)
-        }
-
-        transactionSum()
-    }, [])
-
-    if (!formattedTransactions) {
-        return <h1>Loading...</h1>
+    if (!hostData.incomeData || loading.income) {
+        return <h1 aria-live="polite">Loading...</h1>
     }
 
-    function transactionsAmount() {
-        const arrayData = transactionsData.map(({ amount }) => amount)
-        const zeroData = arrayData.filter( element => element <= 0)
-        let number = 0
-
-        if (!zeroData) {
-            number = arrayData.length 
-        } else {
-            number = arrayData.length - zeroData.length
-        }
-
-        return number
+    if (error.income) {
+        console.error("Error occurred:", error.income)
+        return <h1 aria-live="assertive">There was an error: {error.income.message || "Unknown error occurred"}</h1>
     }
 
     return (
         <section className="host-section">
-
             <div className="top-text">
-                    <h2>Income</h2>
+                <h2>Income</h2>
             </div>
-            
+
             <h2>{formattedTransactions}</h2>
-            
+
             <VerticalBarChart />
 
             <div className="info-header">
@@ -61,12 +29,13 @@ export default function Income() {
             </div>
 
             <div className="transactions">
-                {transactionsData.map((item) => (
+                {hostData.incomeData?.map((item) => (
                     item.amount ? (
-                    <div key={item.id} className="transaction">
-                        <h3>${item.amount}</h3>
-                        <p>{item.date}</p>
-                    </div> ) : ""
+                        <div key={item.id} className="transaction">
+                            <h3>${item.amount}</h3>
+                            <p>{item.date}</p>
+                        </div>
+                    ) : null
                 ))}
             </div>
         </section>

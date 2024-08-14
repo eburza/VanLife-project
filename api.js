@@ -23,6 +23,8 @@ const db = getFirestore(app)
 
 // Refactoring the fetching functions below
 const vansCollectionRef = collection(db, "vans")
+const reviewCollectionRef = collection(db, "reviews")
+const transactionCollectionRef = collection(db, "transactions")
 
 export async function getVans() {
     const snapshot = await getDocs(vansCollectionRef)
@@ -55,6 +57,25 @@ export async function getHostVans() {
         id: doc.id
     }))
     return vans
+}
+
+export async function getReviewData() {
+    const snapshot = await getDocs(reviewCollectionRef)
+    const reviews = snapshot.docs.map( doc => ({
+        ...doc.data(),
+        id: doc.id
+    }))
+    return reviews
+}
+
+export async function getTransactionsData() {
+    const snapshot = await getDocs(transactionCollectionRef)
+    const transactions = snapshot.docs.map( doc => ({
+        ...doc.data(),
+        id: doc.id
+    }))
+    
+    return transactions
 }
 
 
