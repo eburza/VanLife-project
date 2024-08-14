@@ -49,7 +49,7 @@ export default function VanDetail() {
     }
 
     return (
-        <div className="van-info-page">
+        <section className=" section van-detail-page">
 
             <Link to={hasFilters ? `..${searchLink}` : ".."} relative="path">
                 <div className="back-to-vans-page">
@@ -59,18 +59,20 @@ export default function VanDetail() {
             </Link>
             
             {van ? (
-                <div className="van-info-page-copy">
-                    <img className="img-van-info-page" src={van.image} alt={`Image of ${van.name}`}/>
-                    <p className={`tag van-type-tag van-info-tag ${van.type}`} >{capitalizeFirstLetter(van.type)}</p>
-                    <p className="van-title van-info-title">{van.name}</p>
-                    <p className="van-info-price"><span>${van.price}</span>/day</p>
-                    <p>{van.description}</p>
+                <div className="copy-container">
+                    <img className="van-img" src={van.image} alt={`Image of ${van.name}`}/>
+                    <p className={`tag tag-type tag-type-details ${van.type}`} >{capitalizeFirstLetter(van.type)}</p>
+                    <div className="copy-container van-details-copy">
+                        <p className="van-title">{van.name}</p>
+                        <p className="van-info-price"><span>${van.price}</span>/day</p>
+                        <p>{van.description}</p>
+                    </div>
                 </div>
             ) : <h2>Loading...</h2>}
 
             <Link to="./vans" className="link van-info-btn-orange">
-                <button className="btn-orange">Rent this van</button>
+                <button className="button btn-l btn-orange">Rent this van</button>
             </Link>
-        </div>
+        </section>
     )
 }

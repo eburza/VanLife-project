@@ -46,10 +46,8 @@ export default function Header() {
 
 
                 <div className="dropdown">
-                    <div className="dropbtn"> 
-                        <RxAvatar className="header-avatar"/>
-                    </div>
-                    <div className="dropdown-content">
+                    <RxAvatar className="dropdown-avatar"/>
+                    <div className="dropdown-menu">
                         <NavLink to="login"><p href="#">Log in</p></NavLink>
                         <Link to="/login"><p onClick={handleLogout}>Log out</p></Link>
                     </div>

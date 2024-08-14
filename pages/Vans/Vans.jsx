@@ -59,7 +59,7 @@ export default function Vans() {
                         <p className="van-list-day">/day</p>
                     </div>
                 </div>
-                <p className={`tag van-type-tag ${van.type} selected`}>{capitalizeFirstLetter(van.type)}</p>
+                <p className={`tag tag-type ${van.type}`}>{capitalizeFirstLetter(van.type)}</p>
             </div>
         </Link>
     ))
@@ -98,31 +98,6 @@ export default function Vans() {
         })
     }
 
-    //return (
-    //    <div className="main-vans">
-    //        <h1 className="main-vans-title">Explore our van options</h1>
-
-    //        <div className="tag-section">
-    //            <div className="tag-list">
-    //                {uniqueTags.map(tag => (
-    //                    <p onClick={ () => handleFilterChange("type", `${tag}`)} key={tag} className={`tag tag-list-el tag-list-el-${tag} ${typeSearch === tag ? `active active-${tag}` : ''}`}>{capitalizeFirstLetter(tag)}</p>
-    //                ))}
-    //            </div>
-//
-    //            {
-    //                typeSearch && (
-    //                    <p onClick={ () => setSearchParams({})} className="filters-reset"><u>Clear filters</u></p>
-    //                )
-    //            }
-//
-    //        </div>
-//
-    //        <div className="van-list">
-    //            { vanElements }
-    //        </div>
-    //    </div>
-    //)
-
     if (loading) {
         return( 
             <h1 aria-live="polite">Loading...</h1>
@@ -135,10 +110,10 @@ export default function Vans() {
     }
 
     return (
-        <div className="main-vans">
-            <h1 className="main-vans-title">Explore our van options</h1>
+        <section className=" section section-vans">
+            <h1 className="section-vans-title">Explore our van options</h1>
 
-            <div className="tag-section">
+            <div className="tag-container">
                 <div className="tag-list">
                     {uniqueTags.map(tag => (
                         <p 
@@ -152,7 +127,7 @@ export default function Vans() {
                 </div>
 
                 {typeSearch.length > 0 && (
-                    <p onClick={() => setSearchParams({})} className="filters-reset"><u>Clear filters</u></p>
+                    <p onClick={() => setSearchParams({})} className="tag-reset"><u>Clear filters</u></p>
                 )}
 
             </div>
@@ -160,7 +135,7 @@ export default function Vans() {
             <div className="van-list">
                 {vanElements}
             </div>
-        </div>
+        </section>
     )
 }
 
