@@ -12,17 +12,21 @@ export function HostDataProvider({ children }) {
         reviewsData: null,
         hostVansData: [],
         vansData: [],
-        vanData: null
+        oneVanData: null
     })
     const [formattedTransactions, setFormattedTransactions] = useState("")
 
     const [loading, setLoading] = useState({
         income: false,
         reviews: false,
+        vans: false,
+        oneVan: false
     })
     const [error, setError] = useState({
         income: null,
         reviews: null,
+        vans: null,
+        oneVan: null
     })
 
     const params = useParams()
@@ -93,29 +97,32 @@ export function HostDataProvider({ children }) {
         loadVans()
     }, [])
 
-/*
+    /*
     useEffect(() => {
         async function loadVan() {
-            setLoading(prevState => ({ ...prevState, vans: true }))
+            setLoading(prevState => ({ ...prevState, oneVan: true }))
             try {
                 const data = await getVan(params.id)
-
+    
                 if (!data) throw new Error("Data not found")
-
+    
                 setHostData(prevState => ({
                     ...prevState,
-                    vanData: data,
-                }));
+                    oneVanData: data,
+                }))
             } catch (err) {
-                setError(prevState => ({ ...prevState, vans: err }))
+                setError(prevState => ({ ...prevState, oneVan: err }))
             } finally {
-                setLoading(prevState => ({ ...prevState, vans: false }))
+                setLoading(prevState => ({ ...prevState, oneVan: false }))
             }
         }
-
-        loadVan()
+    
+        if (params.id) {
+            loadVan()
+        }
     }, [params.id])
-*/
+    */
+    
     useEffect(() => {
         async function loadHostVans() {
             setLoading(prevState => ({ ...prevState, vans: true }))

@@ -75,16 +75,16 @@ export default function Vans() {
     }
 
     if (loading.vans) {
-        return <h1 aria-live="polite">Loading...</h1>;
+        return <h1 aria-live="polite">Loading...</h1>
     }
 
     if (error.vans) {
-        console.error("Error occurred:", error.vans);
+        console.error("Error occurred:", error.vans)
         return <h1 aria-live="assertive">There was an error: {error.vans?.message || "Unknown error occurred"}</h1>;
     }
 
     if (!hostData.vansData.length) {
-        return <p>No vans available.</p>;
+        return <p>No vans available.</p>
     }
 
     return (
