@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
-import { getTransactionsData, getReviewData, getHostVans } from '../api'
+import { useParams } from "react-router-dom"
+import { getTransactionsData, getReviewData, getHostVans, getVans, getVan } from '../api'
 import { calculateSum } from "../function/calculateSum"
 import { calculateAverage } from "../function/calculateAverage"
 
@@ -9,9 +10,11 @@ export function HostDataProvider({ children }) {
     const [hostData, setHostData] = useState({
         incomeData: null,
         reviewsData: null,
-        vansData: []
+        hostVansData: [],
+        vansData: [],
+        vanData: null
     })
-    const [formattedTransactions, setFormattedTransactions] = useState("");
+    const [formattedTransactions, setFormattedTransactions] = useState("")
 
     const [loading, setLoading] = useState({
         income: false,
@@ -22,12 +25,16 @@ export function HostDataProvider({ children }) {
         reviews: null,
     })
 
+    const params = useParams()
 
     useEffect(() => {
         async function loadTransactions() {
             setLoading(prevState => ({ ...prevState, income: true }))
             try {
                 const data = await getTransactionsData()
+
+                if (!data) throw new Error("Data not found")
+
                 setHostData(prevState => ({
                     ...prevState,
                     incomeData: data,
@@ -47,10 +54,13 @@ export function HostDataProvider({ children }) {
             setLoading(prevState => ({ ...prevState, reviews: true }))
             try {
                 const data = await getReviewData()
+
+                if (!data) throw new Error("Data not found")
+
                 setHostData(prevState => ({
                     ...prevState,
                     reviewsData: data,
-                }));
+                }))
             } catch (err) {
                 setError(prevState => ({ ...prevState, reviews: err }))
             } finally {
@@ -61,15 +71,18 @@ export function HostDataProvider({ children }) {
         loadReviews()
     }, [])
 
-    useEffect(() => {
+   /* useEffect(() => {
         async function loadVans() {
             setLoading(prevState => ({ ...prevState, vans: true }))
             try {
-                const data = await getHostVans()
+                const data = await getVans()
+
+                if (!data) throw new Error("Data not found")
+
                 setHostData(prevState => ({
                     ...prevState,
-                    vansData: data,
-                }));
+                    vans: data,
+                }))
             } catch (err) {
                 setError(prevState => ({ ...prevState, vans: err }))
             } finally {
@@ -78,6 +91,51 @@ export function HostDataProvider({ children }) {
         }
 
         loadVans()
+    }, [])
+*/
+/*
+    useEffect(() => {
+        async function loadVan() {
+            setLoading(prevState => ({ ...prevState, vans: true }))
+            try {
+                const data = await getVan(params.id)
+
+                if (!data) throw new Error("Data not found")
+
+                setHostData(prevState => ({
+                    ...prevState,
+                    van: data,
+                }));
+            } catch (err) {
+                setError(prevState => ({ ...prevState, vans: err }))
+            } finally {
+                setLoading(prevState => ({ ...prevState, vans: false }))
+            }
+        }
+
+        loadVan()
+    }, [params.id])
+*/
+    useEffect(() => {
+        async function loadHostVans() {
+            setLoading(prevState => ({ ...prevState, vans: true }))
+            try {
+                const data = await getHostVans()
+
+                if (!data) throw new Error("Data not found")
+
+                setHostData(prevState => ({
+                    ...prevState,
+                    hostVansData: data,
+                }));
+            } catch (err) {
+                setError(prevState => ({ ...prevState, vans: err }))
+            } finally {
+                setLoading(prevState => ({ ...prevState, vans: false }))
+            }
+        }
+
+        loadHostVans()
     }, [])
 
     useEffect(() => {
@@ -102,6 +160,10 @@ export function HostDataProvider({ children }) {
     }
 
     const ratingAverage = () => {
+        if (!hostData || !hostData.reviewsData || hostData.reviewsData.length === 0) {
+            return 0
+        }
+
         const ratingsArray = hostData.reviewsData.map(({ rating }) => rating);
         const rating = calculateAverage(ratingsArray);
 
@@ -132,3 +194,24 @@ export function HostDataProvider({ children }) {
 export function useHostData() {
     return useContext(HostDataContext)
 }
+
+
+/*    React.useEffect(() => {
+        async function loadVan() {
+            setLoading(true)
+            try {
+                const vanData = await getVan(params.id)
+                if (vanData) {
+                    setVan(vanData)
+                } else {
+                    setError(new Error("Van not found"))
+                }
+            } catch (err) {
+                setError(err)
+            } finally {
+                setLoading(false)
+            }
+        }
+    
+        loadVan()
+    }, [params.id]) */

@@ -49,10 +49,10 @@ export default function VanDetail() {
     }
 
     return (
-        <section className=" section van-detail-page">
+        <section className=" section van-detail-section">
 
             <Link to={hasFilters ? `..${searchLink}` : ".."} relative="path">
-                <div className="back-to-vans-page">
+                <div className="back-to-vans-section">
                     <IoArrowBackOutline />
                     <p>{hasFilters ? "Back to selected vans" : "Back to all vans"}</p>
                 </div>

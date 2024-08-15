@@ -37,14 +37,22 @@ body {
     padding: 2rem;
 }
 
+.margin-footer {
+    margin-top: 2rem;
+}
+
 /* txt */
 
-h1, h2, p {
+h1, h2, h3, p {
     margin: 0;
 }
 
 h1 {
     font-size: 2em;
+}
+
+.txt-color {
+    color: #E17654;
 }
 
 .copy-container {
@@ -235,7 +243,7 @@ footer {
 /* About page */
 
 .section-about{
-    padding-bottom: 1rem;
+    padding-bottom: 4rem;
 }
 
 .image-container-about {
@@ -258,6 +266,61 @@ footer {
 .button-about {
     margin-top: 1rem;
 }
+
+/* not found page */
+
+.main-not-found {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    margin-top: -2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-not-found h1 {
+    font-size: 1.75em;
+}
+
+/* login page */
+
+.login-section {
+    justify-content: center;
+    align-items: center;
+    margin-top: -2rem;
+    gap: 2rem;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.login-form > input {
+    padding: 1rem;
+    font-family: inherit;
+    font-size: 1em;
+}
+
+.input-email {
+    border: 1px solid #D1D5DB;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.input-password {
+    border-width: 0;
+    border-radius: 0 0 0.5rem 0.5rem;
+    border-bottom: 1px solid #D1D5DB;
+    border-right: 1px solid #D1D5DB;
+    border-left: 1px solid #D1D5DB;
+}
+
+.login-btn {
+    margin-top: 2rem;
+}
+
 
 /* vans page tags */
 
@@ -347,10 +410,10 @@ footer {
     background-color: #161616;
 }
 
-/* Vans page */
+/* vans page */
 
 .section-vans {
-    padding: 0 2rem;
+    padding: 0 2rem 4rem;
     margin-bottom: 3rem;
 }
 
@@ -407,14 +470,13 @@ footer {
 
 /* van detail page */
 
-.van-detail-page {
+.van-detail-section {
     display: flex;
     flex-direction: column;
-    padding: 1rem 2rem;
-    margin-bottom: 2rem;
+    padding: 1rem 2rem 4rem;
 }
 
-.back-to-vans-page {
+.back-to-vans-section {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -422,12 +484,12 @@ footer {
     margin-bottom: 2rem;
 }
 
-.back-to-vans-page:hover > p {
+.back-to-vans-section:hover > p {
     text-decoration: underline;
     font-weight: 500;
 }
 
-.back-to-vans-page > p {
+.back-to-vans-section > p {
     color: #201F1D;
     margin: 0;
 }
@@ -440,25 +502,107 @@ footer {
     font-weight: 600;
 }
 
-.van-info-btn-orange {
-    margin-top: 1rem;;
-}
-
 .van-details-copy {
     gap: 1rem;
 }
 
-/* host page - vans */
+/* host dashboard */
+
+.host-dashboard-container {
+    padding:  1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.host-dashboard-section a {
+    color: #201F1D;
+}
+
+.host-dashboard-section {
+    padding-bottom: 4rem;
+}
+
+.host-dashboard-earnings {
+    background-color: #ffead0;
+}
+
+.host-dashboard-earnings > .info > h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.host-dashboard-earnings > .info > p {
+    color: #4d4d4d;
+    padding: 1.5rem 0 0.5rem 0;
+}
+
+.host-income {
+    font-size: 2.25em;
+    font-weight: 800;
+}
+
+.host-dashboard-reviews {
+    background-color: #ffddb2;
+}
+
+.star {
+    color: #ff8c38;
+    font-size: 1em;
+}
+
+.star-l {
+    font-size: 1.5em;
+}
+
+.star-dashboard {
+    margin-left: 1rem;
+}
+
+.host-dashboard-reviews p {
+    margin-left: 0.5rem;
+    font-size: 1.25em;
+    color: #4d4d4d;
+    margin-right: auto;
+}
+
+.host-dashboard-reviews p > span {
+    font-weight: bold;
+    color: #161616;
+}
+
+
+.host-dashboard-vans {
+    padding:  1.5rem 2rem;
+}
+
+.host-dashboard-vans > .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.host-van-list-solo {
+    background-color: #fff;
+    padding: 1.5rem 2rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.host-van-list-solo-element {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* host vans */
 
 .host-van-list {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-}
-
-.host-van-list h1 {
-    margin: 0;
-    font-size: 2em;
 }
 
 .host-van-list-empty {
@@ -488,28 +632,20 @@ footer {
     gap: 0.5rem;
 }
 
-.host-van-list-price,
-.host-van-list-name {
-    margin: 0 ;
-}
-
-.host-van-list-name {
-    color: #161616;
-    font-weight: 600;
-    font-size: 1.5rem;
-}
-
 .host-van-list-price {
     color: #4D4D4D;
     font-size: 1.25rem;
 }
 
-/* host page - vans - details */
+/* host vans - details */
 
-.host-van-info-page {
+.host-details-section {
+    padding: 0 2rem;
+}
+
+.host-van-info-container {
     padding: 2rem;
     background-color: #fff;
-    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -519,173 +655,92 @@ footer {
     font-size: 1em;
 }
 
-.selected-van-details {
+.van-details-container {
     display: grid;
     gap: 1rem;
     grid-template-columns: 150px auto;
 }
 
-.selected-van-img {
+.van-details-container .van-img{
     width: 150px;
     border-radius: 0.25rem;
 }
 
-.selected-van-copy {
+.van-details-top-txt {
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
-.selected-van-type {
-    padding: 0.5rem 1rem;
-    font-size: 0.75em;
-    display: block;
-    margin: 0 auto 0 0;
-}
-
-.selected-van-copy .van-info-title {
-    margin: 1rem 0;
+    gap: 1rem;
 }
 
 .bold {
     font-weight: 600;
 }
 
-.host-details-subp {
-    display: flex;
-    flex-direction: column;
+.host-details-bottom-section {
     gap: 0.75rem;
 }
 
-.host-details-subp p{
-    margin: 0;
-}
-
-.host-details-subp .van-info-price {
+.host-details-bottom-section .van-info-price {
     font-size: 1.5em;
 }
 
-.host-details-subp .selected-van-img {
+.host-details-bottom-section img {
+    border-radius: 0.5rem;
     width: 100px;
-}
-
-/* not found page */
-
-.main-not-found {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    margin-top: -2rem;
-    justify-content: center;
-    align-items: center;
-}
-
-.main-not-found h1 {
-    font-size: 1.75em;
-}
-
-/* login page */
-
-.login-container {
-    justify-content: center;
-    align-items: center;
-    margin-top: -2rem;
-}
-
-.login-form {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-}
-
-.login-form > input {
-    padding: 1rem;
-    font-family: inherit;
-    font-size: 1em;
-}
-
-.input-email {
-    border: 1px solid #D1D5DB;
-    border-radius: 0.5rem 0.5rem 0 0;
-}
-
-.input-password {
-    border-width: 0;
-    border-radius: 0 0 0.5rem 0.5rem;
-    border-bottom: 1px solid #D1D5DB;
-    border-right: 1px solid #D1D5DB;
-    border-left: 1px solid #D1D5DB;
-}
-
-.login-btn {
-    margin-top: 2rem;
-}
-
-.login-error {
-    color: #E17654;
 }
 
 /* host reviews */
 
+.host-section {
+    padding: 0 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.host-section .top-text{
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
 .host-rating {
     display: flex;
     align-items: center;
-    margin-bottom: 2rem;
 }
 
-.rating-review-star {
-    margin: 0 0.5rem;
-    font-size: 1.25rem;
+.star-review-top {
+    margin: 0 1rem 0 0.5rem;
 }
 
-.host-rating p,
-.host-rating h1 {
-    margin: 0;
-}
-
-.host-section {
-    color: #161616;
-}
-
-.host-section .top-text {
+.host-container {
     display: flex;
-    align-items: center;
-    margin-bottom: 32px;
+    flex-direction: column;
 }
 
-.host-section .top-text > h2 {
-    font-weight: 700;
-    font-size: 32px;
-    margin: 0;
-    margin-right: 20px;
+.host-reviews-container {
+    gap: 1.25rem;
 }
 
-.host-section .top-text > p {
-    margin: 0;
-    color: #4d4d4d;
+.host-reviews-container .review-container {
+    gap: 0.5rem;
 }
 
-.host-section .top-text > p span {
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-.host-section .review {
-    margin-block: 25px;
-}
-
-.host-section .review .info {
+.star-container {
     display: flex;
+    gap: 0.25rem;
 }
 
-.host-section .review .name {
-    color: #161616;
-    margin-right: 10px;
+.review-container .info {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.review-container .name {
     font-weight: 600;
 }
 
-.host-section .review .date {
+.review-container .date {
     color: #8c8c8c;
 }
 
@@ -695,10 +750,6 @@ footer {
     border: 0;
 }
 
-.host-section .review-star {
-    color: #ff8c38;
-    margin-right: 5px;
-}
 /* chart */
 .chart-element {
     display: grid;
@@ -758,276 +809,36 @@ footer {
 
 /* host income */
 
-
-.host-section {
-    color: #161616;
+.income-section{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
-.host-section > p {
-    color: #4d4d4d;
+.transactions-container {
+    margin-top: 1rem;
+    gap: 1.5rem;
 }
 
-.host-section > p span {
-    text-decoration: underline;
-    font-weight: bold;
+.transactions-container .transaction-list-title {
+    font-size: 1.5em;
 }
 
-.host-section > h2 {
-    font-size: 38px;
-    color: #161616;
-    font-weight: 900;
-}
-
-img.graph {
-    width: 100%;
-    max-width: 500px;
-}
-
-.section .info-header > p {
-    color: #4d4d4d;
-}
-
-.host-section .info-header > p span {
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-.host-section .info-header > h3 {
-    font-weight: 700;
-    font-size: 24px;
-    margin-top: 60px;
-}
-
-.host-section .transaction {
+.transactions-container .transaction {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: white;
-    margin-bottom: 31px;
-    padding: 35px 29px;
-    border-radius: 6px;
+    padding: 1.5rem 2rem;
+    border-radius: 0.5rem;
 }
-.host-section .transaction > h3 {
-    font-size: 36px;
+.transactions-container .transaction > h3 {
+    font-size: 2.5em;
     font-weight: 600;
-    margin: 0;
 }
 
-.host-section .transaction > p {
+.transactions-container .transaction > p {
     font-weight: 500;
-    font-size: 20px;
+    font-size: 1.25em;
     color: #4d4d4d;
-}
-
-/* host dashboard */
-
-.host-van-single > img {
-    height: 70px;
-    border-radius: 5px;
-    margin-right: 17px;
-}
-
-.host-dashboard-earnings {
-    background-color: #ffead0;
-    padding: 37px 26px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.host-dashboard-earnings > .info > h1 {
-    font-size: 36px;
-    color: #161616;
-    margin: 0;
-}
-
-.host-dashboard-earnings > .info > p {
-    color: #4d4d4d;
-}
-
-.host-dashboard-earnings > .info > p > span {
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-.host-dashboard-earnings > .info > h2 {
-    margin: 0;
-    font-size: 38px;
-    color: #161616;
-    font-weight: 900;
-}
-
-.host-dashboard-reviews {
-    background-color: #ffddb2;
-    padding: 25px 26px;
-    display: flex;
-    align-items: center;
-}
-
-.host-dashboard-reviews > h2 {
-    margin: 0;
-}
-
-.host-dashboard-reviews .star {
-    color: #ff8c38;
-    margin-left: 15px;
-    font-size: 25px;
-}
-
-.host-dashboard-reviews p {
-    margin-left: 5px;
-    font-size: 20px;
-    color: #4d4d4d;
-    margin-right: auto;
-}
-
-.host-dashboard-reviews p > span {
-    font-weight: bold;
-    color: #161616;
-}
-
-.host-dashboard-vans {
-    padding: 38px 26px;
-}
-
-.host-dashboard-vans > .top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.host-dashboard-vans .host-vans-list {
-    padding-inline: 0;
-}
-
-/* van info */
-
-.host-van-link-wrapper {
-    color: unset;
-    text-decoration: unset;
-}
-
-.host-vans-list {
-    padding-inline: 26px;
-}
-
-.host-vans-title {
-    padding-inline: 26px;
-}
-
-.host-van-single {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    margin-bottom: 15px;
-    padding: 18px 24px;
-}
-
-.host-van-single > img {
-    height: 70px;
-    border-radius: 5px;
-    margin-right: 17px;
-}
-
-.host-van-info {
-    margin-right: auto;
-}
-
-.host-van-info h3 {
-    font-size: 20px;
-    font-weight: 600;
-    margin-block: 10px;
-}
-
-.host-van-info p {
-    margin-block: 10px;
-}
-
-.host-van-detail-layout-container {
-    background-color: white;
-    padding: 24px;
-    margin: 30px 26px;
-}
-
-.host-van-detail {
-    display: flex;
-    align-items: center;
-}
-
-.host-van-detail > img {
-    height: 160px;
-    border-radius: 5px;
-    margin-right: 20px;
-}
-
-.host-van-detail-info-text > h3 {
-    margin-top: 24px;
-    margin-bottom: 5px;
-    font-size: 26px;
-    font-weight: 700;
-}
-
-.host-van-detail-info-text > h4 {
-    font-size: 20px;
-    margin-block: 0;
-}
-
-.host-van-detail-nav {
-    display: flex;
-    margin-block: 25px;
-}
-
-.host-van-detail-nav a {
-    text-decoration: none;
-    color: #4d4d4d;
-    font-weight: 500;
-    padding: 5px 20px;
-}
-
-.host-van-detail-nav a:first-of-type {
-    text-decoration: none;
-    color: #4d4d4d;
-    font-weight: 500;
-    padding: 5px 15px;
-    margin-left: -15px;
-}
-
-.host-van-detail-nav a:hover {
-    color: #161616;
-    text-decoration: underline;
-    font-weight: 700;
-}
-
-.host-van-detail-info > h4 {
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 21px;
-}
-.host-van-detail-info > h4 > span {
-    font-weight: 500;
-}
-
-.host-van-price {
-    font-size: 24px;
-    font-weight: 500;
-}
-
-.host-van-price > span {
-    font-size: 16px;
-    color: #4d4d4d;
-}
-
-.host-van-detail-image {
-    height: 100px;
-    border-radius: 5px;
-}
-
-.host-section a {
-    color: #4d4d4d;
-    opacity: 80%;
-}
-
-.host-section a:hover {
-    font-weight: 600;
-    text-decoration: underline;
 }

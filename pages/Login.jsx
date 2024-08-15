@@ -1,5 +1,5 @@
 import React from "react"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate, Link } from "react-router-dom"
 import { loginUser } from "../api"
 
 //email: "b@b.com", password: "p123"
@@ -29,7 +29,6 @@ export default function Login() {
         
         loginUser(loginForm)
             .then( data => {
-                //console.log(data)
                 setError(null);
                 localStorage.setItem("loggedin", true)
                 localStorage.removeItem("wasLoggedOut")
@@ -52,9 +51,9 @@ export default function Login() {
     }
 
     return (
-        <section className="login-container section">
-            {location.state?.message && <h3 className="login-error">{location.state.message}</h3>}
-            {localStorage.getItem("wasLoggedOut") && <h3 className="login-error">You have successfully logged out!</h3>}
+        <section className="login-section section">
+            {location.state?.message && <h3 className="txt-color">{location.state.message}</h3>}
+            {localStorage.getItem("wasLoggedOut") && <h3 className="txt-color">You have successfully logged out!</h3>}
             <h1>Sign in to your account</h1>
             {error?.message && <h3 className="login-error">{error.message}</h3>}
 
@@ -77,12 +76,12 @@ export default function Login() {
                 </input>
                 <button 
                 disabled={state === "submitting"} 
-                className="login-btn btn-orange">
+                className="login-btn btn-orange button">
                     {state === "submitting" ? "Logging in..." :  "Sign in"}
                 </button>
             </form>
 
-            <p>Don’t have an account? <span>Create one now</span></p>
+            <p>Don’t have an account? <span className="txt-color bold">Create one now</span>.</p>
         </section>
     )
 }

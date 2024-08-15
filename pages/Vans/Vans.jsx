@@ -47,10 +47,11 @@ export default function Vans() {
 
     const vanElements = displayVans.map(van => (
         <Link 
-        to={van.id} 
+        to={van.id}
+        key={van.id}
         state={searchParams.toString() ? { search: `?${searchParams.toString()}` } : {}}
         aria-label={`View details for ${van.name}, priced at $${van.price} per day`}>
-            <div key={van.id} className="van-element">
+            <div className="van-element">
                 <img className="van-img" src={van.image} alt={`Image of ${van.name}`}/>
                 <div className="van-info">
                     <p className="van-title">{van.name}</p>
@@ -110,7 +111,7 @@ export default function Vans() {
     }
 
     return (
-        <section className=" section section-vans">
+        <section className="section section-vans">
             <h1 className="section-vans-title">Explore our van options</h1>
 
             <div className="tag-container">

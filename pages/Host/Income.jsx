@@ -15,20 +15,15 @@ export default function Income() {
     }
 
     return (
-        <section className="host-section">
-            <div className="top-text">
-                <h2>Income</h2>
-            </div>
+        <section className="host-section income-section section">
+            <h2 className="top-text">Income</h2>
 
-            <h2>{formattedTransactions}</h2>
+            <h2 className="host-income">{formattedTransactions}</h2>
 
-            <VerticalBarChart />
+            <VerticalBarChart className="host-income-chart"/>
 
-            <div className="info-header">
-                <h3>{`Your transactions ${transactionsAmount()}`}</h3>
-            </div>
-
-            <div className="transactions">
+            <div className="transactions-container host-container">
+                <h3 className="transaction-list-title">{`Your transactions ${transactionsAmount()}`}</h3>
                 {hostData.incomeData?.map((item) => (
                     item.amount ? (
                         <div key={item.id} className="transaction">

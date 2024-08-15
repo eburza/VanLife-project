@@ -44,24 +44,24 @@ export default function HostVanDetail() {
     }
 
     return (
-        <section className="host-van-details">
+        <section className="section host-details-section">
             <div className="host-van-details-back">
                 <Link to=".." relative="path">
-                    <div className="back-to-vans-page host-van-detail-back">
+                    <div className="back-to-vans-section">
                         <IoArrowBackOutline />
                         <p>Back to vans</p>
                     </div>
                 </Link>
             </div>
 
-            <div className="host-van-info-page">
-                <div className="selected-van-details">
-                    <img className="selected-van-img" src={selectedVan.image} alt={`image of ${selectedVan.name}`} />
-                    <div className="selected-van-copy">
-                        <p className={`selected-van-type tag van-type-tag ${selectedVan.type}`}>
+            <div className="host-van-info-container">
+                <div className="van-details-container">
+                    <img className="van-img" src={selectedVan.image} alt={`image of ${selectedVan.name}`} />
+                    <div className="van-details-top-txt">
+                        <p className={`tag tag-type tag-type-details ${selectedVan.type}`}>
                             {capitalizeFirstLetter(selectedVan.type)}
                         </p>
-                        <p className="van-title van-info-title">{selectedVan.name}</p>
+                        <p className="van-title">{selectedVan.name}</p>
                         <p className="van-info-price"><span>${selectedVan.price}</span>/day</p>
                     </div>
                 </div>

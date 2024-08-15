@@ -7,7 +7,7 @@ export default function HostVanDetailInfo() {
     const { name, type, description } = useOutletContext() 
 
     return (
-        <section className="host-details-subp">
+        <section className="section host-details-bottom-section">
             <p><span className="bold">Name: </span>{name}</p>
             <p><span className="bold">Type: </span>{capitalizeFirstLetter(type)}</p>
             <p><span className="bold">Description: </span>{description}</p>
