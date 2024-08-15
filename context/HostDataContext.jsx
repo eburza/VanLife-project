@@ -71,7 +71,7 @@ export function HostDataProvider({ children }) {
         loadReviews()
     }, [])
 
-   /* useEffect(() => {
+   useEffect(() => {
         async function loadVans() {
             setLoading(prevState => ({ ...prevState, vans: true }))
             try {
@@ -81,7 +81,7 @@ export function HostDataProvider({ children }) {
 
                 setHostData(prevState => ({
                     ...prevState,
-                    vans: data,
+                    vansData: data,
                 }))
             } catch (err) {
                 setError(prevState => ({ ...prevState, vans: err }))
@@ -92,7 +92,7 @@ export function HostDataProvider({ children }) {
 
         loadVans()
     }, [])
-*/
+
 /*
     useEffect(() => {
         async function loadVan() {
@@ -104,7 +104,7 @@ export function HostDataProvider({ children }) {
 
                 setHostData(prevState => ({
                     ...prevState,
-                    van: data,
+                    vanData: data,
                 }));
             } catch (err) {
                 setError(prevState => ({ ...prevState, vans: err }))

@@ -1,49 +1,24 @@
 import React from "react"
 import { Link, useSearchParams } from "react-router-dom"
 import { capitalizeFirstLetter } from "../../function/capitalizeFirstLetter"
-import { getVans } from "../../api"
+import { useHostData } from "../../context/HostDataContext"
 
 export default function Vans() {
 
+    const { hostData, error, loading } = useHostData();
     const [ searchParams, setSearchParams ] = useSearchParams()
-    const [ vans, setVans ] = React.useState([])
-    const [ loading, setLoading ] = React.useState(false)
-    const [ error, setError ] = React.useState(null)
 
-    //const typeSearch = searchParams.get("type")
     const typeSearch = searchParams.get("type")?.split(",") || []
-
-    //React.useEffect(() => {
-    //    fetch("/api/vans")
-    //        .then(res => res.json())
-    //        .then(data => setVans(data.vans))
-    //}, [])
-
-    React.useEffect(() => {
-        async function loadVans() {
-            setLoading(true)
-            try {
-                const data = await getVans()
-                setVans(data)
-            } catch (err) {
-                setError(err)
-            } finally {
-                setLoading(false)
-            }
-        }
-
-        loadVans()
-    }, [])
 
     //const displayVans = typeSearch
     //    ? vans.filter( van => van.type === typeSearch )
     //    : vans
 
     const displayVans = typeSearch.length > 0
-    ? vans.filter(van => typeSearch.includes(van.type))
-    : vans
+    ? hostData.vansData.filter(van => typeSearch.includes(van.type))
+    : hostData.vansData
 
-    const uniqueTags = [...new Set(vans.map(van => van.type))];
+    const uniqueTags = [...new Set(hostData.vansData.map(van => van.type))];
 
     const vanElements = displayVans.map(van => (
         <Link 
@@ -99,15 +74,17 @@ export default function Vans() {
         })
     }
 
-    if (loading) {
-        return( 
-            <h1 aria-live="polite">Loading...</h1>
-        )
+    if (loading.vans) {
+        return <h1 aria-live="polite">Loading...</h1>;
     }
 
-    if (error) {
-        console.error("Error occurred:", error);
-        return <h1 aria-live="assertive">There was an error: {error.message || "Unknown error occurred"}</h1>;
+    if (error.vans) {
+        console.error("Error occurred:", error.vans);
+        return <h1 aria-live="assertive">There was an error: {error.vans?.message || "Unknown error occurred"}</h1>;
+    }
+
+    if (!hostData.vansData.length) {
+        return <p>No vans available.</p>;
     }
 
     return (
@@ -115,27 +92,32 @@ export default function Vans() {
             <h1 className="section-vans-title">Explore our van options</h1>
 
             <div className="tag-container">
-                <div className="tag-list">
-                    {uniqueTags.map(tag => (
-                        <p 
-                            onClick={() => handleFilterChange(tag)} 
-                            key={tag} 
-                            className={`tag tag-list-el tag-list-el-${tag} ${typeSearch.includes(tag) ? `active active-${tag}` : ''}`}
-                        >
-                            {capitalizeFirstLetter(tag)}
-                        </p>
-                    ))}
-                </div>
-
+                {uniqueTags.length > 0 ? (
+                    <div className="tag-list">
+                        {uniqueTags.map(tag => (
+                            <p 
+                                onClick={() => handleFilterChange(tag)} 
+                                key={tag} 
+                                className={`tag tag-list-el tag-list-el-${tag} ${typeSearch.includes(tag) ? `active active-${tag}` : ''}`}
+                            >
+                                {capitalizeFirstLetter(tag)}
+                            </p>
+                        ))}
+                    </div>
+                ) : (
+                    <p>No filters available.</p>
+                )
+                }
                 {typeSearch.length > 0 && (
-                    <p onClick={() => setSearchParams({})} className="tag-reset"><u>Clear filters</u></p>
-                )}
-
+                    <p onClick={() => setSearchParams({})} className="tag-reset"><u>Clear filters</u></p>)
+                }
             </div>
 
-            <div className="van-list">
-                {vanElements}
-            </div>
+            { hostData.vansData.length > 0 ?
+                (<div className="van-list">
+                    {vanElements}
+                </div>) :
+                (<p className="host-van-list-empty">No vans available.</p>) }
         </section>
     )
 }
