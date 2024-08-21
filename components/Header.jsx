@@ -2,6 +2,7 @@ import React from "react"
 import { NavLink, Link, useNavigate, useLocation } from "react-router-dom"
 import logo from "../assets/VanLife-logo.svg"
 import { RxAvatar } from "react-icons/rx"
+import BurgerMenu from "./BurgerMenu"
 
 export default function Header() {
 
@@ -33,7 +34,7 @@ export default function Header() {
         navigate("/login", { state: { from: location.pathname } })
     }
 
-    console.log("Current location:", location.pathname)
+    //console.log("Current location:", location.pathname)
 
     return (
         <header className="navigation">
@@ -42,7 +43,10 @@ export default function Header() {
                 <img src={logo} alt="VanLife Logo" className="vanlife-logo" />
             </Link>
 
-            <nav className="nav-links">
+            <BurgerMenu />
+
+            <nav className="nav-links main-navigation">
+                
                 <NavLink 
                 to="host" 
                 className={({isActive}) => isActive ? "active-link" : null }

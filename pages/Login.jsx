@@ -1,5 +1,5 @@
 import React from "react"
-import { useLocation, useNavigate, Link } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { loginUser } from "../api"
 
 //email: "b@b.com", password: "p123"
@@ -22,7 +22,7 @@ export default function Login() {
         }
     }, [])
 
-    console.log("Navigating from:", from)
+    //console.log("Navigating from:", from)
 
     function handleSubmit(event) {
         event.preventDefault()

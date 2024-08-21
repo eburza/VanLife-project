@@ -5,7 +5,7 @@ export default function HostLayout() {
 
     
     return (
-        <div className="page">
+        <div className="host-page">
             
         <nav className="nav-links host-nav">
             <NavLink 

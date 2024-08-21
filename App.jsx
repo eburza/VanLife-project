@@ -2,6 +2,7 @@ import React from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Layout from "./components/Layout"
 import HostLayout from "./components/HostLayout"
+//import BurgerMenu from "./components/BurgerMenu"
 import Home from "./pages/Home"
 import About from "./pages/About"
 import NotFound from "./pages/NotFound"
@@ -26,6 +27,7 @@ export default function App() {
     return (
       <HostDataProvider>
         <BrowserRouter>
+
             <Routes>
                 <Route path="/" element={<Layout />}>
                 

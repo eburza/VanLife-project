@@ -45,22 +45,27 @@ export default function Dashboard() {
     
     return (
         <section className="section host-dashboard-section">
-            <section className="host-dashboard-earnings host-dashboard-container">
-                <div className="info">
-                    <h1 className="top-text">Welcome!</h1>
-                    <p>Income</p>
-                    <h2 className="host-income">{formattedTransactions || "Loading..."}</h2>
+
+            <section className="host-dashboard-earnings">
+                <div className="host-dashboard-container dashboard-earnings">
+                    <div className="info">
+                        <h1 className="top-text">Welcome!</h1>
+                        <p>Income</p>
+                        <h2 className="host-income">{formattedTransactions || "Loading..."}</h2>
+                    </div>
+                    <Link to="income">Details</Link>
                 </div>
-                <Link to="income">Details</Link>
             </section>
     
-            <section className="host-dashboard-reviews host-dashboard-container">
-                <h2>Review score</h2>
-                <BsStarFill className="star star-dashboard star-l" />
-                <p>
-                    <span>{ratingAverage() || "Loading..."}</span>/5
-                </p>
-                <Link to="reviews">Details</Link>
+            <section className="host-dashboard-reviews">
+                <div className="host-dashboard-container dashboard-reviews">
+                    <h2>Review score</h2>
+                    <BsStarFill className="star star-dashboard star-l" />
+                    <p>
+                        <span>{ratingAverage() || "Loading..."}</span>/5
+                    </p>
+                    <Link to="reviews">Details</Link>
+                </div>
             </section>
     
             <section className="host-dashboard-vans host-van-list">
