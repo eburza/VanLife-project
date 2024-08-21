@@ -12,7 +12,7 @@ export default function Login() {
 
     const location = useLocation()
     const navigate = useNavigate()
-    const from = location?.state?.from?.pathname
+    const from = location.state?.from?.pathname || sessionStorage.getItem("lastPage") || "/"
 
     React.useEffect(() => {
         if (localStorage.getItem("wasLoggedOut")) {
@@ -20,7 +20,9 @@ export default function Login() {
                 localStorage.removeItem("wasLoggedOut")
             }, 3000);
         }
-    }, []);
+    }, [])
+
+    console.log("Navigating from:", from)
 
     function handleSubmit(event) {
         event.preventDefault()

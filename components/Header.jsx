@@ -1,12 +1,13 @@
 import React from "react"
-import { NavLink, Link, useNavigate } from "react-router-dom"
-import logo from "../assets/VanLife-logo.svg";
-import { RxAvatar } from "react-icons/rx";
+import { NavLink, Link, useNavigate, useLocation } from "react-router-dom"
+import logo from "../assets/VanLife-logo.svg"
+import { RxAvatar } from "react-icons/rx"
 
 export default function Header() {
 
     const navigate = useNavigate()
-
+    const location = useLocation()
+/*
     function handleLogout() {
         const isLoggedIn = localStorage.getItem("loggedin");
     
@@ -16,6 +17,23 @@ export default function Header() {
         }
         navigate("/login");
     }
+*/
+    function handleLoginNavigation() {
+        sessionStorage.setItem("lastPage", location.pathname)
+        navigate("/login", { state: { from: location.pathname } })
+    }
+
+    const isLoggedIn = localStorage.getItem("loggedin")
+
+    function handleLogout() {
+        if (isLoggedIn) {
+            localStorage.removeItem("loggedin")
+            localStorage.setItem("wasLoggedOut", true)
+        }
+        navigate("/login", { state: { from: location.pathname } })
+    }
+
+    console.log("Current location:", location.pathname)
 
     return (
         <header className="navigation">
@@ -46,10 +64,26 @@ export default function Header() {
 
 
                 <div className="dropdown">
-                    <RxAvatar className="dropdown-avatar"/>
+                    <NavLink 
+                        to={isLoggedIn ? "/host" : "/login"} 
+                        className={({ isActive }) => isActive ? "active-link" : null }
+                        state={{ from: location.pathname }}
+                        onClick={handleLoginNavigation}
+                    >
+                        <RxAvatar className="dropdown-avatar" />
+                    </NavLink>
                     <div className="dropdown-menu">
-                        <NavLink to="login"><p href="#">Log in</p></NavLink>
-                        <Link to="/login"><p onClick={handleLogout}>Log out</p></Link>
+                        {!isLoggedIn ? (
+                            <Link 
+                                to="/login"
+                                state={{ from: location.pathname }}
+                                onClick={handleLoginNavigation}
+                            >
+                                <p>Log in</p>
+                            </Link>
+                        ) : (
+                            <p onClick={handleLogout}>Log out</p>
+                        )}
                     </div>
                 </div>
             </nav>

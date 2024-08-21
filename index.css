@@ -194,14 +194,16 @@ nav a:hover,
     font-weight: 400;
     font-size: 1rem;
     color: #161616;
-    padding: 0.75rem 1rem;
+    padding-left: 0.5rem;
     display: block;
-    margin: 0;
+    margin: 0.75rem 1rem;
     white-space: nowrap;
   }
   
 .dropdown-menu p:hover {
     font-weight: 600;
+    text-decoration: none;
+    border-left: 1.5px solid #161616;
   }
 
 .dropdown:hover .dropdown-menu {
