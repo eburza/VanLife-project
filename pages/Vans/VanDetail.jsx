@@ -2,7 +2,7 @@ import React from "react"
 import { useParams, Link, useLocation } from "react-router-dom"
 import { capitalizeFirstLetter } from "../../function/capitalizeFirstLetter.js/"
 import { IoArrowBackOutline } from "react-icons/io5";
-import { getVan } from "../../api"
+import { getVan } from "../../services/api"
 
 export default function VanDetail() {
 

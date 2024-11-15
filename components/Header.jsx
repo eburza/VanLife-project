@@ -3,22 +3,12 @@ import { NavLink, Link, useNavigate, useLocation } from "react-router-dom"
 import logo from "../assets/VanLife-logo.svg"
 import { RxAvatar } from "react-icons/rx"
 import BurgerMenu from "./BurgerMenu"
+import { logoutUser } from "../services/firebase-auth"
 
 export default function Header() {
-
     const navigate = useNavigate()
     const location = useLocation()
-/*
-    function handleLogout() {
-        const isLoggedIn = localStorage.getItem("loggedin");
-    
-        if (isLoggedIn) {
-            localStorage.removeItem("loggedin");
-            localStorage.setItem("wasLoggedOut", true);
-        }
-        navigate("/login");
-    }
-*/
+
     function handleLoginNavigation() {
         sessionStorage.setItem("lastPage", location.pathname)
         navigate("/login", { state: { from: location.pathname } })
@@ -26,19 +16,20 @@ export default function Header() {
 
     const isLoggedIn = localStorage.getItem("loggedin")
 
-    function handleLogout() {
+    async function handleLogout() {
         if (isLoggedIn) {
-            localStorage.removeItem("loggedin")
-            localStorage.setItem("wasLoggedOut", true)
+            const { error } = await logoutUser()
+            if (!error) {
+                localStorage.removeItem("loggedin")
+                localStorage.removeItem("userId")
+                localStorage.setItem("wasLoggedOut", true)
+            }
         }
         navigate("/login", { state: { from: location.pathname } })
     }
 
-    //console.log("Current location:", location.pathname)
-
     return (
         <header className="navigation">
-
             <Link to="..">
                 <img src={logo} alt="VanLife Logo" className="vanlife-logo" />
             </Link>
@@ -46,31 +37,29 @@ export default function Header() {
             <BurgerMenu />
 
             <nav className="nav-links main-navigation">
-                
                 <NavLink 
-                to="host" 
-                className={({isActive}) => isActive ? "active-link" : null }
+                    to="host" 
+                    className={({isActive}) => isActive ? "active-link" : null}
                 >
                     Host
                 </NavLink>
                 <NavLink 
-                to="about" 
-                className={({isActive}) => isActive ? "active-link" : null }                
+                    to="about" 
+                    className={({isActive}) => isActive ? "active-link" : null}
                 >
                     About
                 </NavLink>
                 <NavLink 
-                to="vans" 
-                className={({isActive}) => isActive ? "active-link" : null }
+                    to="vans" 
+                    className={({isActive}) => isActive ? "active-link" : null}
                 >
                     Vans
                 </NavLink>
 
-
                 <div className="dropdown">
                     <NavLink 
                         to={isLoggedIn ? "/host" : "/login"} 
-                        className={({ isActive }) => isActive ? "active-link" : null }
+                        className={({ isActive }) => isActive ? "active-link" : null}
                         state={{ from: location.pathname }}
                         onClick={handleLoginNavigation}
                     >
@@ -91,7 +80,6 @@ export default function Header() {
                     </div>
                 </div>
             </nav>
-            
         </header>
     )
 }

@@ -19,6 +19,8 @@ import Income from "./pages/Host/Income"
 import Reviews from "./pages/Host/Reviews"
 import AuthorizationRequired from "./components/AuthorizationRequired"
 import { HostDataProvider } from './context/HostDataContext'
+import PopulateDB from './components/PopulateDB'
+
 
 
 import "./server"
@@ -30,8 +32,8 @@ export default function App() {
 
             <Routes>
                 <Route path="/" element={<Layout />}>
+                <Route path="populate" element={<PopulateDB />} />
                 
-
                   <Route index element={<Home />} />
                   <Route path="about" element={<About />} />
                   <Route path="vans" element={<Vans />} />

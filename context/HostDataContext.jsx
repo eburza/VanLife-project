@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 import { useParams } from "react-router-dom"
-import { getTransactionsData, getReviewData, getHostVans, getVans, getVan } from '../api'
+import { getTransactionsData, getReviewData, getHostVans, getVans } from '../services/api'
 import { calculateSum } from "../function/calculateSum"
 import { calculateAverage } from "../function/calculateAverage"
 

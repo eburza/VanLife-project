@@ -10,7 +10,7 @@ export default function HostVanDetailInfo() {
         <section className="section host-details-bottom-section">
             <p><span className="bold">Name: </span>{name}</p>
             <p><span className="bold">Type: </span>{capitalizeFirstLetter(type)}</p>
-            <p><span className="bold">Description: </span>{description}</p>
+            <p className="bottom-section-description"><span className="bold">Description: </span>{description}</p>
             <p><span className="bold">Visibility: </span>Public</p>
         </section>
     )

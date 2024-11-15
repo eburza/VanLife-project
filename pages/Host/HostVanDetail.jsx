@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useParams, NavLink, Outlet } from "react-router-dom";
 import { IoArrowBackOutline } from "react-icons/io5";
 import { capitalizeFirstLetter } from "../../function/capitalizeFirstLetter.js/";
-import { getVan } from "../../api";
+import { getVan } from "../../services/api";
 
 export default function HostVanDetail() {
     const [selectedVan, setSelectedVan] = React.useState(null);
@@ -15,7 +15,7 @@ export default function HostVanDetail() {
         async function loadVan() {
             setLoading(true);
             try {
-                const vanData = await getVan(params.id); // Fetch the van directly by id
+                const vanData = await getVan(params.id);
                 if (vanData) {
                     setSelectedVan(vanData);
                 } else {

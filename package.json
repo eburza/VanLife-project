@@ -1,6 +1,7 @@
 {
-  "name": "Scrim-s0d6odebca",
-  "description": "https://v2.scrimba.com/the-frontend-developer-career-path-c0j/~0121",
+  "name": "vanlife",
+  "description": "Rent your van for your next journey",
+  "type": "module",
   "scripts": {
     "start": "vite",
     "dev": "vite",
@@ -13,7 +14,7 @@
     "@mui/icons-material": "^5.16.7",
     "@mui/material": "^5.16.7",
     "chart.js": "^4.4.3",
-    "firebase": "^10.12.5",
+    "firebase": "^10.14.1",
     "react": "18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0",
