@@ -127,8 +127,13 @@ button:hover {
     cursor: pointer;
 }
 
-.link-button {
+.link {
     width: 100%;
+}
+
+.van-info-btn-orange {
+    max-width: 720px;
+    width: 100%
 }
 
 /* navigation */
@@ -525,6 +530,7 @@ footer {
     display: flex;
     flex-direction: column;
     padding: 1rem 2rem 4rem;
+    width: 100%;
 }
 
 .back-to-vans-section {
